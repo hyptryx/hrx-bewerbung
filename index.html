@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HRX CreatorNET – Bewerbung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <img src="assets/logo.png" alt="HRX Logo" class="logo">
+  </header>
+
+  <main class="container">
+    <h1>HRX CreatorNET Anfrage</h1>
+    <p class="subtitle">
+      Werde Teil des HRX CreatorNET – kostenlos, fair und gemeinsam stärker.
+    </p>
+
+    <form id="applicationForm">
+
+      <!-- Plattform -->
+      <label for="plattform">Plattform *</label>
+      <select id="plattform" name="plattform" required>
+        <option value="">Bitte wählen</option>
+        <option value="Tiktok">Tiktok</option>
+        <option value="Twitch">Twitch</option>
+        <option value="beides">beides</option>
+      </select>
+
+      <!-- Empfehlung -->
+      <label for="referrer">Wer hat dich empfohlen?</label>
+      <select id="referrer" name="referrer">
+        <option value="">Niemand / Sonstiges</option>
+        <option value="Chaotrix">Chaotrix</option>
+        <option value="Ramisake">Ramisake</option>
+        <option value="LeddyLive">LeddyLive</option>
+        <option value="JawiVali">JawiVali</option>
+        <option value="Mechi">Mechi</option>
+        <option value="Letz Zock">Letz Zock</option>
+        <option value="Ronin Martoku">Ronin Martoku</option>
+        <option value="WalkingDavidson">WalkingDavidson</option>
+        <option value="MaToMaTV">MaToMaTV</option>
+        <option value="Pizza Olli">Pizza Olli</option>
+        <option value="Blackshark">Blackshark</option>
+        <option value="Schinsky93">Schinsky93</option>
+        <option value="Kernyxo">Kernyxo</option>
+      </select>
+
+      <!-- Kontakt -->
+      <label for="email">E-Mail *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="discord">Discord *</label>
+      <input type="text" id="discord" name="discord" required placeholder="Discord-Tag" />
+
+      <!-- Twitch -->
+      <label for="twitchName">Twitch Name</label>
+      <input type="text" id="twitchName" name="twitchName" />
+
+      <label for="twitchLink">Twitch Link</label>
+      <input type="url" id="twitchLink" name="twitchLink" placeholder="https://twitch.tv/..." />
+
+      <!-- TikTok -->
+      <label for="tiktokName">TikTok Name</label>
+      <input type="text" id="tiktokName" name="tiktokName" />
+
+      <label for="tiktokLink">TikTok Link</label>
+      <input type="url" id="tiktokLink" name="tiktokLink" placeholder="https://www.tiktok.com/@..." />
+
+      <!-- Stats -->
+      <label for="avgViewers">Durchschnittliche Viewer</label>
+      <input type="number" id="avgViewers" name="avgViewers" min="0" />
+
+      <label for="streamsPerWeek">Streams pro Woche</label>
+      <input type="number" id="streamsPerWeek" name="streamsPerWeek" min="0" />
+
+      <!-- Kategorie -->
+      <label for="category">Kategorie</label>
+      <select id="category" name="category">
+        <option value="">Bitte wählen</option>
+        <option value="Gaming">Gaming</option>
+        <option value="Dj">Dj</option>
+        <option value="Just Chatting">Just Chatting</option>
+        <option value="IRL">IRL</option>
+        <option value="andere">andere</option>
+      </select>
+
+      <!-- Motivation -->
+      <label for="motivation">Warum willst du ins HRX CreatorNET? *</label>
+      <textarea id="motivation" name="motivation" rows="4" required></textarea>
+
+      <!-- Alter -->
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="age18"> Ich bin mindestens 18 Jahre alt.</label>
+        <label><input type="checkbox" id="age16"> Falls nicht 18: Ich bin mindestens 16 Jahre alt.</label>
+      </div>
+
+      <!-- Datenschutz -->
+      <label class="privacy">
+        <input type="checkbox" id="privacy" required>
+        Ich stimme der Datenschutzerklärung zu.
+      </label>
+
+      <button type="submit">Bewerbung absenden</button>
+      <p id="status" class="status"></p>
+    </form>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
 
