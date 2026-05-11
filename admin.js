@@ -19,12 +19,12 @@ import {
 // Firebase Config – DEINE ECHTEN DATEN HIER EINTRAGEN
 // ---------------------------------------------------------
 const firebaseConfig = {
-  apiKey: "DEIN_API_KEY",
-  authDomain: "DEIN_PROJEKT.firebaseapp.com",
-  projectId: "DEIN_PROJEKT",
-  storageBucket: "DEIN_PROJEKT.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
+  apiKey: "AIzaSyCe4KxJOU7uWqgmXzi5NL-QKa0CGn-qpfI",
+  authDomain: "hrx-bewerbungsseite.firebaseapp.com",
+  projectId: "hrx-bewerbungsseite",
+  storageBucket: "hrx-bewerbungsseite.firebasestorage.app",
+  messagingSenderId: "651494196655",
+  appId: "1:651494196655:web:0d2ee74ff0fc1295e69b5a"
 };
 
 // ---------------------------------------------------------
