@@ -16,7 +16,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // ---------------------------------------------------------
-//  Firebase Config (GLEICH wie in app.js)
+// Firebase Config – DEINE ECHTEN DATEN HIER EINTRAGEN
 // ---------------------------------------------------------
 const firebaseConfig = {
   apiKey: "DEIN_API_KEY",
@@ -28,15 +28,11 @@ const firebaseConfig = {
 };
 
 // ---------------------------------------------------------
-//  Firebase Initialisierung
-// ---------------------------------------------------------
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// ---------------------------------------------------------
-//  DOM Elemente
-// ---------------------------------------------------------
+// DOM Elemente
 const loginSection = document.getElementById("loginSection");
 const adminSection = document.getElementById("adminSection");
 
@@ -50,16 +46,11 @@ const logoutButton = document.getElementById("logoutButton");
 const container = document.getElementById("applications");
 const statusFilter = document.getElementById("statusFilter");
 
-// ---------------------------------------------------------
-//  Variablen
-// ---------------------------------------------------------
 let currentFilter = "all";
 let lastSnapshot = null;
 let unsubscribe = null;
 
-// ---------------------------------------------------------
-//  LOGIN
-// ---------------------------------------------------------
+// LOGIN
 loginButton.addEventListener("click", async () => {
   loginStatus.textContent = "";
 
@@ -68,40 +59,32 @@ loginButton.addEventListener("click", async () => {
     loginStatus.textContent = "Login erfolgreich.";
     loginStatus.style.color = "green";
   } catch (err) {
-    loginStatus.textContent = "Login fehlgeschlagen. Bitte prüfen.";
+    loginStatus.textContent = "Login fehlgeschlagen.";
     loginStatus.style.color = "red";
   }
 });
 
-// ---------------------------------------------------------
-//  LOGOUT
-// ---------------------------------------------------------
+// LOGOUT
 logoutButton.addEventListener("click", async () => {
   await signOut(auth);
 });
 
-// ---------------------------------------------------------
-//  AUTH-STATUS ÜBERWACHEN
-// ---------------------------------------------------------
+// AUTH-STATUS
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // Eingeloggt → Admin-Bereich anzeigen
     loginSection.style.display = "none";
     adminSection.style.display = "block";
     startListening();
   } else {
-    // Nicht eingeloggt → Login anzeigen
     loginSection.style.display = "block";
     adminSection.style.display = "none";
     stopListening();
   }
 });
 
-// ---------------------------------------------------------
-//  Firestore Listener starten
-// ---------------------------------------------------------
+// Firestore Listener starten
 function startListening() {
-  if (unsubscribe) return; // Schon aktiv
+  if (unsubscribe) return;
 
   const q = query(
     collection(db, "hrx_applications"),
@@ -114,9 +97,7 @@ function startListening() {
   });
 }
 
-// ---------------------------------------------------------
-//  Firestore Listener stoppen
-// ---------------------------------------------------------
+// Listener stoppen
 function stopListening() {
   if (unsubscribe) {
     unsubscribe();
@@ -125,27 +106,21 @@ function stopListening() {
   container.innerHTML = "";
 }
 
-// ---------------------------------------------------------
-//  Filter ändern
-// ---------------------------------------------------------
+// Filter ändern
 statusFilter.addEventListener("change", () => {
   currentFilter = statusFilter.value;
   if (lastSnapshot) render(lastSnapshot);
 });
 
-// ---------------------------------------------------------
-//  Render-Funktion (Bewerbungen anzeigen)
-// ---------------------------------------------------------
+// Render-Funktion
 function render(snapshot) {
   container.innerHTML = "";
 
   snapshot.forEach((docSnap) => {
     const data = docSnap.data();
 
-    // Filter anwenden
     if (currentFilter !== "all" && data.status !== currentFilter) return;
 
-    // Karte erstellen
     const card = document.createElement("div");
     card.className = "application-card";
 
@@ -177,7 +152,6 @@ function render(snapshot) {
       </div>
     `;
 
-    // Buttons
     const approveBtn = card.querySelector(".btn-approve");
     const denyBtn = card.querySelector(".btn-deny");
 
@@ -196,7 +170,6 @@ function render(snapshot) {
     container.appendChild(card);
   });
 
-  // Wenn keine Bewerbungen gefunden wurden
   if (!container.innerHTML) {
     container.innerHTML = "<p>Keine Bewerbungen gefunden.</p>";
   }
