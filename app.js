@@ -6,20 +6,25 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Firebase Config – hier deine echten Daten eintragen
+// ---------------------------------------------------------
+// Firebase Config – DEINE ECHTEN DATEN HIER EINTRAGEN
+// ---------------------------------------------------------
 const firebaseConfig = {
-  apiKey: "AIzaSyCe4KxJOU7uWqgmXzi5NL-QKa0CGn-qpfI",
-  authDomain: "hrx-bewerbungsseite.firebaseapp.com",
-  projectId: "hrx-bewerbungsseite",
-  storageBucket: "hrx-bewerbungsseite.firebasestorage.app",
-  messagingSenderId: "651494196655",
-  appId: "1:651494196655:web:0d2ee74ff0fc1295e69b5a"
+  apiKey: "DEIN_API_KEY",
+  authDomain: "DEIN_PROJEKT.firebaseapp.com",
+  projectId: "DEIN_PROJEKT",
+  storageBucket: "DEIN_PROJEKT.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID",
 };
 
-console.log("Firebase config:", firebaseConfig);
+console.log("Firebase Config geladen:", firebaseConfig);
 
+// ---------------------------------------------------------
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+console.log("Firebase initialisiert:", app);
 
 const form = document.getElementById("applicationForm");
 const statusEl = document.getElementById("status");
@@ -27,14 +32,14 @@ const statusEl = document.getElementById("status");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  console.log("Form submit gestartet");
+  console.log("Formular wurde abgeschickt");
 
   const age18 = document.getElementById("age18").checked;
   const age16 = document.getElementById("age16").checked;
   const privacy = document.getElementById("privacy").checked;
 
   if (!age18 && !age16) {
-    statusEl.textContent = "Bitte bestätige dein Alter (mind. 16 oder 18).";
+    statusEl.textContent = "Bitte bestätige dein Alter.";
     statusEl.style.color = "red";
     return;
   }
@@ -65,7 +70,7 @@ form.addEventListener("submit", async (e) => {
     createdAt: serverTimestamp(),
   };
 
-  console.log("Daten, die gespeichert werden:", data);
+  console.log("Daten die gespeichert werden:", data);
 
   try {
     statusEl.textContent = "Sende...";
@@ -73,7 +78,7 @@ form.addEventListener("submit", async (e) => {
 
     const docRef = await addDoc(collection(db, "hrx_applications"), data);
 
-    console.log("Dokument gespeichert mit ID:", docRef.id);
+    console.log("Dokument gespeichert:", docRef.id);
 
     statusEl.textContent = "Bewerbung erfolgreich gesendet!";
     statusEl.style.color = "green";
