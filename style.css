@@ -1,1 +1,175 @@
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: system-ui, sans-serif;
+  color: #222;
+}
+
+.header {
+  text-align: center;
+  padding: 30px 0 10px;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #7b5cff;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 2px solid #dcd2ff;
+  background: #faf8ff;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #7b5cff;
+  outline: none;
+  background: #ffffff;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b5cff, #9b6bff);
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-top: 10px;
+}
+
+.privacy {
+  margin-top: 20px;
+  display: block;
+}
+
+.status {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Admin-Bereich */
+
+.applications-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.application-card {
+  background: #ffffff;
+  border: 2px solid #dcd2ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.application-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.badge.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge.denied {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-row {
+  margin-top: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.btn-approve {
+  background: #7b5cff;
+  color: #fff;
+}
+
+.btn-deny {
+  background: #ff4b4b;
+  color: #fff;
+}
+
+.filter-row {
+  max-width: 900px;
+  margin: 0 auto 10px;
+  padding: 0 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-row select {
+  max-width: 200px;
+}
 
