@@ -6,15 +6,17 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Deine Firebase Config einfügen
+// Firebase Config – hier deine echten Daten eintragen
 const firebaseConfig = {
-  apiKey: "AIzaSyCe4KxJOU7uWqgmXzi5NL-QKa0CGn-qpfI",
-  authDomain: "hrx-bewerbungsseite.firebaseapp.com",
-  projectId: "hrx-bewerbungsseite",
-  storageBucket: "hrx-bewerbungsseite.firebasestorage.app",
-  messagingSenderId: "651494196655",
-  appId: "1:651494196655:web:0d2ee74ff0fc1295e69b5a"
+  apiKey: "DEIN_API_KEY",
+  authDomain: "DEIN_PROJEKT.firebaseapp.com",
+  projectId: "DEIN_PROJEKT",
+  storageBucket: "DEIN_PROJEKT.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID",
 };
+
+console.log("Firebase config:", firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -24,6 +26,8 @@ const statusEl = document.getElementById("status");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  console.log("Form submit gestartet");
 
   const age18 = document.getElementById("age18").checked;
   const age16 = document.getElementById("age16").checked;
@@ -61,19 +65,22 @@ form.addEventListener("submit", async (e) => {
     createdAt: serverTimestamp(),
   };
 
+  console.log("Daten, die gespeichert werden:", data);
+
   try {
     statusEl.textContent = "Sende...";
     statusEl.style.color = "#7b5cff";
 
-    await addDoc(collection(db, "hrx_applications"), data);
+    const docRef = await addDoc(collection(db, "hrx_applications"), data);
+
+    console.log("Dokument gespeichert mit ID:", docRef.id);
 
     statusEl.textContent = "Bewerbung erfolgreich gesendet!";
     statusEl.style.color = "green";
     form.reset();
   } catch (err) {
-    console.error(err);
-    statusEl.textContent = "Fehler beim Senden.";
+    console.error("Fehler beim Speichern:", err);
+    statusEl.textContent = "Fehler beim Senden. Details in der Konsole.";
     statusEl.style.color = "red";
   }
 });
-
