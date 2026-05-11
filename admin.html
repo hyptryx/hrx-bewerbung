@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HRX CreatorNET – Bewerbungen Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <img src="assets/logo.png" alt="HRX Logo" class="logo">
+  </header>
+
+  <h1 style="text-align:center;color:#7b5cff;">Bewerbungen – Admin</h1>
+
+  <!-- Login -->
+  <main class="container" id="loginSection">
+    <h2>Admin Login</h2>
+
+    <label for="loginEmail">E-Mail</label>
+    <input type="email" id="loginEmail">
+
+    <label for="loginPassword">Passwort</label>
+    <input type="password" id="loginPassword">
+
+    <button id="loginButton">Einloggen</button>
+    <p id="loginStatus" class="status"></p>
+  </main>
+
+  <!-- Admin-Bereich -->
+  <div id="adminSection" style="display:none;">
+    <div class="filter-row">
+      <label for="statusFilter"><strong>Status filtern:</strong></label>
+      <select id="statusFilter">
+        <option value="all">Alle</option>
+        <option value="pending">Nur pending</option>
+        <option value="approved">Nur approved</option>
+        <option value="denied">Nur denied</option>
+      </select>
+
+      <button id="logoutButton" class="btn" style="margin-left:auto;">Logout</button>
+    </div>
+
+    <div id="applications" class="applications-container"></div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
 
